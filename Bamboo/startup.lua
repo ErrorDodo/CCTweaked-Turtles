@@ -23,7 +23,7 @@ for filename, url in pairs(Files) do
     -- Check if the file already exists
     if not fs.exists("farmer/" .. filename) then
         -- Download the file from the URL
-        print("Downloading " .. filename .. " from " .. url)
+        print("Downloading " .. filename)
         local response = http.get(url)
         if response then
             -- Write the contents of the response to the file
