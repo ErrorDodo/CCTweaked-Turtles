@@ -26,14 +26,15 @@ for filename, url in pairs(Files) do
         print("Downloading " .. filename .. " from " .. url)
         local response = http.get(url)
         if response then
-        -- Write the contents of the response to the file
-        local file = fs.open("farmer/" .. filename, "w")
-        file.write(response.readAll())
-        file.close()
-        response.close()
-        print("Downloaded " .. filename)
+            -- Write the contents of the response to the file
+            local file = fs.open("farmer/" .. filename, "w")
+            file.write(response.readAll())
+            file.close()
+            response.close()
+            print("Downloaded " .. filename)
         else
-        print("Failed to download " .. filename)
+            print("Failed to download " .. filename)
+            print("Response code: " .. response.getResponseCode())
         end
     end
 end
