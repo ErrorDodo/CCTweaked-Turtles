@@ -8,10 +8,10 @@ os.setComputerLabel(name)
 
 -- Create a table of all .lua files that should exist on the turtle and their download urls
 Files = {
-    ["farmer.lua"] = "https://raw.githubusercontent.com/ErrorDodo/CCTweaked-Turtles/Bamboo/Farmer/farmer.lua",
-    ["actions.lua"] = "https://raw.githubusercontent.com/ErrorDodo/CCTweaked-Turtles/Bamboo/Farmer/actions.lua",
-    ["finder.lua"] = "https://raw.githubusercontent.com/ErrorDodo/CCTweaked-Turtles/Bamboo/Farmer/finder.lua",
-    ["state.lua"] = "https://raw.githubusercontent.com/ErrorDodo/CCTweaked-Turtles/Bamboo/Farmer/state.lua"
+    ["farmer.lua"] = "https://raw.githubusercontent.com/ErrorDodo/CCTweaked-Turtles/main/Bamboo/Farmer/farmer.lua",
+    ["actions.lua"] = "https://raw.githubusercontent.com/ErrorDodo/CCTweaked-Turtles/main/Bamboo/Farmer/actions.lua",
+    ["finder.lua"] = "https://raw.githubusercontent.com/ErrorDodo/CCTweaked-Turtles/main/Bamboo/Farmer/finder.lua",
+    ["state.lua"] = "https://raw.githubusercontent.com/ErrorDodo/CCTweaked-Turtles/main/Bamboo/Farmer/state.lua"
 }
 
 if not fs.exists("farmer") then
