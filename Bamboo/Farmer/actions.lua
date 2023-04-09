@@ -3,22 +3,57 @@ function CheckFaceForBlock(dir)
     local result
     local case = {
         ["front"] = function()
-            result = turtle.inspect()
+            has_block, result = turtle.inspect()
+            if not has_block then
+                result = {
+                    name = "minecraft:air",
+                    state = {},
+                    tags = {}
+                }
+            end
         end,
         ["top"] = function()
-            result = turtle.inspectUp()
+            has_block, result = turtle.inspectUp()
+            if not has_block then
+                result = {
+                    name = "minecraft:air",
+                    state = {},
+                    tags = {}
+                }
+            end
         end,
         ["back"] = function()
-            result = turtle.inspectDown()
+            has_block, result = turtle.inspectDown()
+            if not has_block then
+                result = {
+                    name = "minecraft:air",
+                    state = {},
+                    tags = {}
+                }
+            end
         end,
         ["left"] = function()
             turtle.turnLeft()
-            result = turtle.inspect()
+            has_block, result = turtle.inspect()
+            if not has_block then
+                result = {
+                    name = "minecraft:air",
+                    state = {},
+                    tags = {}
+                }
+            end
             turtle.turnRight()
         end,
         ["right"] = function()
             turtle.turnRight()
-            result = turtle.inspect()
+            has_block, result = turtle.inspect()
+            if not has_block then
+                result = {
+                    name = "minecraft:air",
+                    state = {},
+                    tags = {}
+                }
+            end
             turtle.turnLeft()
         end
     }
@@ -26,7 +61,7 @@ function CheckFaceForBlock(dir)
     if detectFunc then
         detectFunc()
     end
-    return result{
+    return result {
         name = result.name,
         state = result.state,
         tags = result.tags
