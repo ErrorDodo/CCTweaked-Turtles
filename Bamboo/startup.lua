@@ -7,11 +7,12 @@ os.setComputerLabel(name)
 
 
 -- Create a table of all .lua files that should exist on the turtle and their download urls
-Files = {
+local files = {
     ["farmer.lua"] = "https://raw.githubusercontent.com/ErrorDodo/CCTweaked-Turtles/main/Bamboo/Farmer/farmer.lua",
     ["actions.lua"] = "https://raw.githubusercontent.com/ErrorDodo/CCTweaked-Turtles/main/Bamboo/Farmer/actions.lua",
     ["finder.lua"] = "https://raw.githubusercontent.com/ErrorDodo/CCTweaked-Turtles/main/Bamboo/Farmer/finder.lua",
-    ["state.lua"] = "https://raw.githubusercontent.com/ErrorDodo/CCTweaked-Turtles/main/Bamboo/Farmer/state.lua"
+    ["state.lua"] = "https://raw.githubusercontent.com/ErrorDodo/CCTweaked-Turtles/main/Bamboo/Farmer/state.lua",
+    ["models.lua"] = "https://raw.githubusercontent.com/ErrorDodo/CCTweaked-Turtles/main/Bamboo/Farmer/models.lua"
 }
 
 if not fs.exists("farmer") then
@@ -19,7 +20,7 @@ if not fs.exists("farmer") then
 end
 
 -- Loop through the table of files to download
-for filename, url in pairs(Files) do
+for filename, url in pairs(files) do
     -- Check if the file already exists
     if not fs.exists("farmer/" .. filename) then
         -- Download the file from the URL
