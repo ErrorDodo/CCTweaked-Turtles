@@ -13,15 +13,13 @@ function CheckFaceForBlock(dir)
       ["front"] = function() result = turtle.detect() end,
       ["top"] = function() result = turtle.detectUp() end,
       ["back"] = function() result = turtle.detectDown() end,
+      -- Add these as false because I don't really want to lose track of the facing direction
+      -- (Add them back when state is implemented)
       ["left"] = function()
-        turtle.turnLeft()
-        result = turtle.detect()
-        turtle.turnRight()
+        result = false
       end,
       ["right"] = function()
-        turtle.turnRight()
-        result = turtle.detect()
-        turtle.turnLeft()
+        result = false
       end
     }
     local detectFunc = case[dir]
@@ -43,12 +41,10 @@ function Move(dir, numBlocks)
       ["left"] = function()
         turtle.turnLeft()
         result = turtle.forward()
-        turtle.turnRight()
       end,
       ["right"] = function()
         turtle.turnRight()
         result = turtle.forward()
-        turtle.turnLeft()
       end
     }
     local moveFunc = case[dir]
