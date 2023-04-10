@@ -1,8 +1,11 @@
+local state = require("state")
+
 -- To use function CheckFaceForBlock("front")
 function CheckFaceForBlock(dir)
     local result
     local case = {
         ["front"] = function()
+            state.IsBusy = true
             has_block, result = turtle.inspect()
             if not has_block then
                 result = {
@@ -13,6 +16,7 @@ function CheckFaceForBlock(dir)
             end
         end,
         ["top"] = function()
+            state.IsBusy = true
             has_block, result = turtle.inspectUp()
             if not has_block then
                 result = {
@@ -23,6 +27,7 @@ function CheckFaceForBlock(dir)
             end
         end,
         ["back"] = function()
+            state.IsBusy = true
             has_block, result = turtle.inspectDown()
             if not has_block then
                 result = {
@@ -33,6 +38,7 @@ function CheckFaceForBlock(dir)
             end
         end,
         ["left"] = function()
+            state.IsBusy = true
             turtle.turnLeft()
             has_block, result = turtle.inspect()
             if not has_block then
@@ -45,6 +51,7 @@ function CheckFaceForBlock(dir)
             turtle.turnRight()
         end,
         ["right"] = function()
+            state.IsBusy = true
             turtle.turnRight()
             has_block, result = turtle.inspect()
             if not has_block then
@@ -61,10 +68,15 @@ function CheckFaceForBlock(dir)
     if detectFunc then
         detectFunc()
     end
+    state.IsBusy = false
     return result {
         name = result.name,
         state = result.state,
         tags = result.tags
+    } or {
+        name = "minecraft:air",
+        state = {},
+        tags = {}
     }
 end
 
@@ -73,15 +85,19 @@ function Move(dir, numBlocks)
     numBlocks = numBlocks or 1
     local result
     local case = {
-        ["forward"] = function() result = turtle.forward() end,
-        ["up"] = function() result = turtle.up() end,
-        ["back"] = function() result = turtle.back() end,
-        ["down"] = function() result = turtle.down() end,
+        ["forward"] = function() state.IsBusy = true result = turtle.forward() end,
+        ["up"] = function() state.IsBusy = true result = turtle.up() end,
+        ["up"] = function() state.IsBusy = true result = turtle.up() end,
+        ["up"] = function() state.IsBusy = true result = turtle.up() end,
+        ["back"] = function() state.IsBusy = true result = turtle.back() end,
+        ["down"] = function() state.IsBusy = true result = turtle.down() end,
         ["left"] = function()
+            state.IsBusy = true
             turtle.turnLeft()
             result = turtle.forward()
         end,
         ["right"] = function()
+            state.IsBusy = true
             turtle.turnRight()
             result = turtle.forward()
         end
@@ -95,12 +111,19 @@ function Move(dir, numBlocks)
             end
         end
     end
+    state.IsBusy = false
     return result
 end
 
-function CalibrateArea()
+function InitTurtle()
     -- Check the area around the turtle
     for dir, func in pairs(Directions) do
-        AreaAround[dir] = CheckFaceForBlock(dir)
+        state.AreaAround[dir] = CheckFaceForBlock(dir)
     end
 end
+
+return {
+    CheckFaceForBlock = CheckFaceForBlock,
+    Move = Move,
+    InitTurtle = InitTurtle
+}
