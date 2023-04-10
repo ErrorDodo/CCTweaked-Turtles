@@ -1,6 +1,6 @@
-local models = {}
+local model = {}
 
-models.Directions = {
+model.Directions = {
     front = function()
     end,
     top = function()
@@ -15,20 +15,20 @@ models.Directions = {
     end
 }
 
-local AreaMap = {}
-models.AreaMap.__index = AreaMap
+model.AreaMap = {}
+model.AreaMap.__index = model.AreaMap
 
-function models.AreaMap.new()
-    local self = setmetatable({}, AreaMap)
+function model.AreaMap.new()
+    local self = setmetatable({}, model.AreaMap)
     self.SubAreas = {}
     return self
 end
 
-local SubArea = {}
-models.SubArea.__index = SubArea
+model.SubArea = {}
+model.SubArea.__index = model.SubArea
 
-function models.SubArea.new()
-    local self = setmetatable({}, SubArea)
+function model.SubArea.new()
+    local self = setmetatable({}, model.SubArea)
     self.X = 0.0
     self.Y = 0.0
     self.Z = 0.0
@@ -36,11 +36,11 @@ function models.SubArea.new()
     return self
 end
 
-local Blocks = {}
-models.Blocks.__index = Blocks
+model.Blocks = {}
+model.Blocks.__index = model.Blocks
 
-function models.Blocks.new()
-    local self = setmetatable({}, Blocks)
+function model.Blocks.new()
+    local self = setmetatable({}, model.Blocks)
     self.X = 0
     self.Y = 0
     self.Z = 0
@@ -48,15 +48,15 @@ function models.Blocks.new()
     return self
 end
 
-local BlockData = {}
-models.BlockData.__index = BlockData
+model.BlockData = {}
+model.BlockData.__index = model.BlockData
 
-function models.BlockData.new()
-    local self = setmetatable({}, BlockData)
+function model.BlockData.new()
+    local self = setmetatable({}, model.BlockData)
     self.name = ""
     self.state = {}
     self.tags = {}
     return self
 end
 
-return models
+return model
