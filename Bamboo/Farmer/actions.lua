@@ -2,8 +2,8 @@ local state = require("state")
 local models = require("models")
 local Directions = models.Directions
 
-local function detectFrontBlock()
-    local hasBlock, blockInfo = turtle.inspect()
+local function detectBlock(inspectFunc)
+    local hasBlock, blockInfo = inspectFunc()
     if hasBlock then
         return {
             name = blockInfo.name,
@@ -20,67 +20,33 @@ local function detectFrontBlock()
 end
 
 
-local function detectUpBlock()
-    local hasBlock, blockInfo = turtle.inspectUp()
-    if hasBlock then
-        return {
-            name = blockInfo.name,
-            state = blockInfo.state,
-            tags = blockInfo.tags
-        }
-    else
-        return {
-            name = "minecraft:air",
-            state = {},
-            tags = {}
-        }
-    end
-end
-
-local function detectDownBlock()
-    local hasBlock, blockInfo = turtle.inspectDown()
-    if hasBlock then
-        return {
-            name = blockInfo.name,
-            state = blockInfo.state,
-            tags = blockInfo.tags
-        }
-    else
-        return {
-            name = "minecraft:air",
-            state = {},
-            tags = {}
-        }
-    end
-end
-
-local function CheckFaceForBlock(dir)
+local function CheckFaceForBlock(dir, models)
     local result
     local case = {
         ["front"] = function()
-            result = detectFrontBlock()
+            result = detectBlock(turtle.inspect())
         end,
         ["top"] = function()
-            result = detectUpBlock()
+            result = detectBlock(turtle.inspectUp())
         end,
         ["under"] = function()
-            result = detectDownBlock()
+            result = detectBlock(turtle.inspectDown())
         end,
         ["back"] = function()
             turtle.turnLeft()
             turtle.turnLeft()
-            result = detectFrontBlock()
+            result = detectBlock(turtle.inspect())
             turtle.turnLeft()
             turtle.turnLeft()
         end,
         ["left"] = function()
             turtle.turnLeft()
-            result = detectFrontBlock()
+            result = detectBlock(turtle.inspect())
             turtle.turnRight()
         end,
         ["right"] = function()
             turtle.turnRight()
-            result = detectFrontBlock()
+            result = detectBlock(turtle.inspect())
             turtle.turnLeft()
         end
     }
@@ -88,7 +54,7 @@ local function CheckFaceForBlock(dir)
     if detectFunc then
         detectFunc()
     end
-    return {
+    return models.BlockData.new() {
         name = result.name,
         state = result.state,
         tags = result.tags
@@ -96,8 +62,22 @@ local function CheckFaceForBlock(dir)
 end
 
 local function InitTurtle()
+    -- Error check the gps location, if it's working assign it to the state
+    local x, y, z = gps.locate(2)
+    if x == nil then
+        print("GPS not working, please check your setup")
+        return
+    end
+
+    state.InitalLocation = {
+        x = x,
+        y = y,
+        z = z
+    }
+
+    -- Get the current blocks around the turtle
     for dir, func in pairs(Directions) do
-        state.AreaAround[dir] = CheckFaceForBlock(dir)
+        state.AreaAround[dir] = CheckFaceForBlock(dir, models)
     end
 end
 

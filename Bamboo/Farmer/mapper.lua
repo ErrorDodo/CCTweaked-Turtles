@@ -1,0 +1,2 @@
+-- This will be logic for writing a map to memory so the turtle remembers what blocks are around it
+-- Could possibly upload the data to a server to let the user see the map and to allow a server to do tough calculations
