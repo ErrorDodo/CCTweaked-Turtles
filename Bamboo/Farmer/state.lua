@@ -6,3 +6,8 @@ AreaAround = {
     left = BlockData,
     right = BlockData
 }
+
+return {
+    IsBusy = IsBusy,
+    AreaAround = AreaAround
+}

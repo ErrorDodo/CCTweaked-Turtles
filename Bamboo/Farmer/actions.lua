@@ -1,4 +1,5 @@
 local state = require("state")
+local models = require("models")
 
 -- To use function CheckFaceForBlock("front")
 function CheckFaceForBlock(dir)
@@ -116,8 +117,10 @@ function Move(dir, numBlocks)
 end
 
 function InitTurtle()
+    -- Set the turtle to be busy so no other actions can be taken
+    state.IsBusy = true
     -- Check the area around the turtle
-    for dir, func in pairs(Directions) do
+    for dir, func in pairs(models.Directions) do
         state.AreaAround[dir] = CheckFaceForBlock(dir)
     end
 end

@@ -16,3 +16,8 @@ BlockData = {
     state = {},
     tags = {}
 }
+
+return {
+    Directions = Directions,
+    BlockData = BlockData
+}
