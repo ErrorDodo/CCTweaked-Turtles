@@ -63,7 +63,7 @@ local function CheckFaceForBlock(dir)
         ["top"] = function()
             result = detectUpBlock()
         end,
-        ["bottom"] = function()
+        ["under"] = function()
             result = detectDownBlock()
         end,
         ["back"] = function()

@@ -3,6 +3,7 @@ AreaAround = {
     front = BlockData,
     top = BlockData,
     back = BlockData,
+    under = BlockData,
     left = BlockData,
     right = BlockData
 }

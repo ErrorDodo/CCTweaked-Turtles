@@ -5,6 +5,5 @@ local models = require("models")
 actions.InitTurtle()
 
 for direction, func in pairs(models.Directions) do
-    print(direction)
-    print(state.AreaAround[direction].name)
+    print("Current " .. direction .. " block is " .. state.AreaAround[direction].name)
 end

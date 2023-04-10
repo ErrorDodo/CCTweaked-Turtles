@@ -5,6 +5,8 @@ Directions = {
     end,
     back = function()
     end,
+    under = function()
+    end,
     left = function()
     end,
     right = function()
