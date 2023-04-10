@@ -1,16 +1,16 @@
 local models = require("models")
-BlockData = models.BlockData.new()
+local actions = require("actions")
 
 
 IsBusy = false
 
-AreaAround = {
-    front = BlockData,
-    top = BlockData,
-    back = BlockData,
-    under = BlockData,
-    left = BlockData,
-    right = BlockData
+local AreaAround = {
+    front = actions.CheckFaceForBlock("front", models),
+    top = actions.CheckFaceForBlock("top", models),
+    back = actions.CheckFaceForBlock("back", models),
+    under = actions.CheckFaceForBlock("under", models),
+    left = actions.CheckFaceForBlock("left", models),
+    right = actions.CheckFaceForBlock("right", models)
 }
 
 InitalLocation = {

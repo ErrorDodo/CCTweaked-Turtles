@@ -52,7 +52,7 @@ BlockData.__index = BlockData
 function BlockData.new()
     local self = setmetatable({}, BlockData)
     self.name = ""
-    self.states = {}
+    self.state = {}
     self.tags = {}
     return self
 end

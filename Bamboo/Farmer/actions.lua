@@ -24,29 +24,29 @@ local function CheckFaceForBlock(dir, models)
     local result
     local case = {
         ["front"] = function()
-            result = DetectBlock(turtle.inspect())
+            result = DetectBlock(turtle.inspect)
         end,
         ["top"] = function()
-            result = DetectBlock(turtle.inspectUp())
+            result = DetectBlock(turtle.inspectUp)
         end,
         ["under"] = function()
-            result = DetectBlock(turtle.inspectDown())
+            result = DetectBlock(turtle.inspectDown)
         end,
         ["back"] = function()
             turtle.turnLeft()
             turtle.turnLeft()
-            result = DetectBlock(turtle.inspect())
+            result = DetectBlock(turtle.inspect)
             turtle.turnLeft()
             turtle.turnLeft()
         end,
         ["left"] = function()
             turtle.turnLeft()
-            result = DetectBlock(turtle.inspect())
+            result = DetectBlock(turtle.inspect)
             turtle.turnRight()
         end,
         ["right"] = function()
             turtle.turnRight()
-            result = DetectBlock(turtle.inspect())
+            result = DetectBlock(turtle.inspect)
             turtle.turnLeft()
         end
     }
@@ -54,7 +54,7 @@ local function CheckFaceForBlock(dir, models)
     if detectFunc then
         detectFunc()
     end
-    return models.BlockData.new() {
+    return models.BlockData.new {
         name = result.name,
         state = result.state,
         tags = result.tags
