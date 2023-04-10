@@ -70,7 +70,7 @@ function CheckFaceForBlock(dir)
         detectFunc()
     end
     state.IsBusy = false
-    return result {
+    return {
         name = result.name,
         state = result.state,
         tags = result.tags
@@ -80,6 +80,7 @@ function CheckFaceForBlock(dir)
         tags = {}
     }
 end
+
 
 -- To use function Move("forward", 2)
 function Move(dir, numBlocks)
