@@ -2,7 +2,7 @@ local state = require("state")
 local models = require("models")
 local Directions = models.Directions
 
-local function detectBlock(inspectFunc)
+local function DetectBlock(inspectFunc)
     local hasBlock, blockInfo = inspectFunc()
     if hasBlock then
         return {
@@ -24,29 +24,29 @@ local function CheckFaceForBlock(dir, models)
     local result
     local case = {
         ["front"] = function()
-            result = detectBlock(turtle.inspect())
+            result = DetectBlock(turtle.inspect())
         end,
         ["top"] = function()
-            result = detectBlock(turtle.inspectUp())
+            result = DetectBlock(turtle.inspectUp())
         end,
         ["under"] = function()
-            result = detectBlock(turtle.inspectDown())
+            result = DetectBlock(turtle.inspectDown())
         end,
         ["back"] = function()
             turtle.turnLeft()
             turtle.turnLeft()
-            result = detectBlock(turtle.inspect())
+            result = DetectBlock(turtle.inspect())
             turtle.turnLeft()
             turtle.turnLeft()
         end,
         ["left"] = function()
             turtle.turnLeft()
-            result = detectBlock(turtle.inspect())
+            result = DetectBlock(turtle.inspect())
             turtle.turnRight()
         end,
         ["right"] = function()
             turtle.turnRight()
-            result = detectBlock(turtle.inspect())
+            result = DetectBlock(turtle.inspect())
             turtle.turnLeft()
         end
     }
