@@ -27,7 +27,7 @@ function state.init()
         return
     end
 
-    state.InitialLocation = {
+    state.InitalLocation = {
         x = x,
         y = y,
         z = z
