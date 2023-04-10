@@ -1,5 +1,6 @@
 local state = require("state")
 local models = require("models")
+local helpers = require("helpers")
 local Directions = models.Directions
 
 local function InitTurtle()
@@ -18,11 +19,10 @@ local function InitTurtle()
 
     -- Get the current blocks around the turtle
     for dir, func in pairs(Directions) do
-        state.AreaAround[dir] = CheckFaceForBlock(dir, models)
+        state.AreaAround[dir] = helpers.CheckFaceForBlock(dir, models)
     end
 end
 
 return {
-    CheckFaceForBlock = CheckFaceForBlock,
     InitTurtle = InitTurtle,
 }
