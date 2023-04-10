@@ -10,7 +10,6 @@ os.setComputerLabel(name)
 local files = {
     ["farmer.lua"] = "https://raw.githubusercontent.com/ErrorDodo/CCTweaked-Turtles/main/Bamboo/Farmer/farmer.lua",
     ["actions.lua"] = "https://raw.githubusercontent.com/ErrorDodo/CCTweaked-Turtles/main/Bamboo/Farmer/actions.lua",
-    ["finder.lua"] = "https://raw.githubusercontent.com/ErrorDodo/CCTweaked-Turtles/main/Bamboo/Farmer/finder.lua",
     ["state.lua"] = "https://raw.githubusercontent.com/ErrorDodo/CCTweaked-Turtles/main/Bamboo/Farmer/state.lua",
     ["models.lua"] = "https://raw.githubusercontent.com/ErrorDodo/CCTweaked-Turtles/main/Bamboo/Farmer/models.lua"
 }
