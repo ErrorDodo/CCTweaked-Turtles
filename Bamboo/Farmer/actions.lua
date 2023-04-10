@@ -1,7 +1,6 @@
 local state = require("state")
 local models = require("models")
 local Directions = models.Directions
-local BlockData = models.BlockData
 
 local function detectFrontBlock()
     local hasBlock, blockInfo = turtle.inspect()
@@ -89,7 +88,7 @@ local function CheckFaceForBlock(dir)
     if detectFunc then
         detectFunc()
     end
-    return BlockData {
+    return {
         name = result.name,
         state = result.state,
         tags = result.tags
