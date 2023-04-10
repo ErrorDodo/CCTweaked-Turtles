@@ -1,9 +1,9 @@
 local state = require("state")
 
-local function InitTurtle()
+local actions = {}
+
+function actions.InitTurtle()
     state.init()
 end
 
-return {
-    InitTurtle = InitTurtle,
-}
+return actions

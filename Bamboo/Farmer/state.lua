@@ -1,10 +1,11 @@
 local models = require("models")
 local helpers = require("helpers")
 
+local state = {}
 
-IsBusy = false
+state.IsBusy = false
 
-AreaAround = {
+state.AreaAround = {
     front = nil,
     top = nil,
     back = nil,
@@ -13,41 +14,36 @@ AreaAround = {
     right = nil
 }
 
-InitalLocation = {
+state.InitalLocation = {
     x = 0,
     y = 0,
     z = 0
 }
 
-local function init()
+function state.init()
     local x, y, z = gps.locate(2)
     if x == nil then
         print("GPS not working, please check your setup")
         return
     end
 
-    InitalLocation = {
+    state.InitialLocation = {
         x = x,
         y = y,
         z = z
     }
 
     for direction, _ in pairs(models.Directions) do
-        AreaAround[direction] = helpers.CheckFaceForBlock(direction, models)
+        state.AreaAround[direction] = helpers.CheckFaceForBlock(direction, models)
     end
 end
 
-local function update()
+
+function state.update()
     -- Update the state AreaAround
     for direction, _ in pairs(models.Directions) do
-        AreaAround[direction] = helpers.CheckFaceForBlock(direction, models)
+        state.AreaAround[direction] = helpers.CheckFaceForBlock(direction, models)
     end
 end
 
-return {
-    IsBusy = IsBusy,
-    InitalLocation = InitalLocation,
-    AreaAround = AreaAround,
-    update = update,
-    init = init
-}
+return models
