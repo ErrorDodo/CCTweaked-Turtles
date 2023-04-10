@@ -1,16 +1,16 @@
 local models = require("models")
-local actions = require("actions")
+local helpers = require("helpers")
 
 
 IsBusy = false
 
 local AreaAround = {
-    front = actions.CheckFaceForBlock("front", models),
-    top = actions.CheckFaceForBlock("top", models),
-    back = actions.CheckFaceForBlock("back", models),
-    under = actions.CheckFaceForBlock("under", models),
-    left = actions.CheckFaceForBlock("left", models),
-    right = actions.CheckFaceForBlock("right", models)
+    front = helpers.CheckFaceForBlock("front", models),
+    top = helpers.CheckFaceForBlock("top", models),
+    back = helpers.CheckFaceForBlock("back", models),
+    under = helpers.CheckFaceForBlock("under", models),
+    left = helpers.CheckFaceForBlock("left", models),
+    right = helpers.CheckFaceForBlock("right", models)
 }
 
 InitalLocation = {
