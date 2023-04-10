@@ -8,4 +8,4 @@ for direction, _ in pairs(models.Directions) do
     print("Current " .. direction .. " block is " .. state.AreaAround[direction].name)
 end
 
-print("Current X: " .. state.InitalLocation.x .. " Y: " .. state.InitalLocation.y .. " Z: " .. state.InitalLocation.z)
+print("Inital Location X: " .. state.InitalLocation.x .. " Y: " .. state.InitalLocation.y .. " Z: " .. state.InitalLocation.z)
