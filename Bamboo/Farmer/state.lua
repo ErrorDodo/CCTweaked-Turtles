@@ -46,4 +46,4 @@ function state.update()
     end
 end
 
-return models
+return state
