@@ -53,11 +53,6 @@ function helpers.CheckFaceForBlock(dir, models)
     if detectFunc then
         detectFunc()
     end
-    return models.BlockData.new {
-        name = result.name,
-        state = result.state,
-        tags = result.tags
-    }
 end
 
 return helpers
