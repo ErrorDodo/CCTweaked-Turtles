@@ -8,7 +8,7 @@ function actions.InitTurtle()
 end
 
 function actions.Move()
-    helpers.MoveTo(state.x + 2, state.y + 2, state.z + 2)
+    helpers.MoveTo(state.CurrentLocation.x + 2, state.CurrentLocation.y + 2, state.CurrentLocation.z + 2)
     state.update()
 end
 
