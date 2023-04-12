@@ -20,6 +20,12 @@ state.InitalLocation = {
     z = 0
 }
 
+state.CurrentLocation = {
+    x = 0,
+    y = 0,
+    z = 0
+}
+
 function state.init()
     local x, y, z = gps.locate(2)
     if x == nil then
@@ -33,6 +39,8 @@ function state.init()
         z = z
     }
 
+    state.CurrentLocation = state.InitalLocation
+
     for direction, _ in pairs(models.Directions) do
         state.AreaAround[direction] = helpers.CheckFaceForBlock(direction, models)
     end
@@ -44,6 +52,9 @@ function state.update()
     for direction, _ in pairs(models.Directions) do
         state.AreaAround[direction] = helpers.CheckFaceForBlock(direction, models)
     end
+
+    -- Update the state CurrentLocation
+    state.CurrentLocation = helpers.GetCurrentLocation()
 end
 
 return state

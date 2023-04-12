@@ -155,4 +155,8 @@ function helpers.CheckFuel()
     end
 end
 
+function helpers.GetCurrentLocation()
+    return gps.locate()
+end
+
 return helpers

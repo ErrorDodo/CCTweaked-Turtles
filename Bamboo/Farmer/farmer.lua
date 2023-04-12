@@ -9,3 +9,5 @@ for direction, _ in pairs(models.Directions) do
 end
 
 print("Inital Location X: " .. state.InitalLocation.x .. " Y: " .. state.InitalLocation.y .. " Z: " .. state.InitalLocation.z)
+
+actions.Move()
